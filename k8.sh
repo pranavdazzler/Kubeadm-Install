@@ -19,11 +19,16 @@ sudo apt install kubeadm=1.20.0-00 kubectl=1.20.0-00 kubelet=1.20.0-00 -y
 --------------------------------------------- Master Node -------------------------------------------------- 
 sudo su
 kubeadm init
+then do the export command
+
+------------------------------------------------------------------
+dont do it
 
   mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  
+----------------------------------------------------------------------  
+
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 
 kubeadm token create --print-join-command
@@ -34,6 +39,7 @@ sudo su
 kubeadm reset pre-flight checks
 -----> Paste the Join command on worker node and append `--v=5` at end
 
+then see the port - open it master inbound
 #To verify cluster connection  
 ---------------------------------------on Master Node-----------------------------------------
 
